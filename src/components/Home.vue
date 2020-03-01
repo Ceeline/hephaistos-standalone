@@ -25,7 +25,7 @@
           name="instructions"
           placeholder="Write your instructions here..."
         />
-        <h2>Solution :</h2>
+        <h2>Sandbox :</h2>
         <div
           id="editorSol"
           name="solution"
@@ -66,9 +66,9 @@
     >
       <v-card-text v-if="item.failure !== undefined">
         {{ item.failure.message }}<br/>
-        {{ item.file }} - {{ item.name }} - {{ item.time }}
+        {{ item.file }} - {{ item.name }} - {{ item.time }} ms
       </v-card-text>
-      <v-card-text v-else>{{ item.file }} - {{ item.name }} - {{ item.time }}</v-card-text>
+      <v-card-text v-else>{{ item.file }} - {{ item.name }} - {{ item.time }} ms</v-card-text>
     </v-card>
 
   </v-container>
