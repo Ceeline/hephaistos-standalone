@@ -46,13 +46,11 @@ export default {
   async mounted () {
     // get modules
     await this.fetchModules()
-    console.log('module: ' + JSON.stringify(this.modules))
 
     // get sessions by modules
     await Promise.all(
       this.modules.map(m => this.fetchSessionsForModule({ moduleId: m.id }))
     )
-    console.log('session: ' + JSON.stringify(this.sessions))
   },
   computed: {
     ...mapState('modules', ['modules']),
