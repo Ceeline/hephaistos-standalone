@@ -81,7 +81,7 @@ import 'ace-builds/src-noconflict/mode-python'
 import 'ace-builds/webpack-resolver'
 
 export default {
-  name: 'Home',
+  name: 'Exercise',
 
   data: () => ({
     instructions: 'Écrire une fonction `negatifs` qui reçoit un tableau de 10 nombres entiers en paramètre, puis qui calcule la quantité de nombres négatifs dans le tableau. La fonction doit retourner la quantité de nombres négatifs comptés.',
