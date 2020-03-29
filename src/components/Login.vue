@@ -1,22 +1,14 @@
 <template>
-  <v-container>
-      <v-col>
-        <v-col
-          cols="12"
-          md="4"
-        >
+  <v-container fluid>
+    <v-row justify="center">
+      <v-col cols="3">
           <v-text-field
             v-model="email"
             :rules="emailRules"
             label="E-mail"
             required
-          ></v-text-field>
-        </v-col>
+          />
 
-        <v-col
-          cols="12"
-          md="4"
-        >
           <v-text-field
             :append-icon="showPwd ? 'mdi-eye' : 'mdi-eye-off'"
             :type="showPwd ? 'text' : 'password'"
@@ -26,35 +18,25 @@
             :rules="pwdRules"
             label="Password"
             required
-          ></v-text-field>
-        </v-col>
+          />
 
-        <v-col
-          class="text-center"
-          cols="12"
-          sm="4"
-        >
-          <div class="my-2">
-            <v-btn color="primary"
-              @click="loginAction"
-            >Submit</v-btn>
-          </div>
-        </v-col>
+          <v-btn color="primary"
+            @click="loginAction"
+          >Se connecter</v-btn>
       </v-col>
+    </v-row>
   </v-container>
 
 </template>
 
 <script>
 
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Login',
 
   data: () => ({
-    loggedIn: false,
-    errorLogin: '',
     showPwd: false,
     password: '',
     pwdRules: [
@@ -73,17 +55,13 @@ export default {
     async loginAction () {
       const { email, password } = this
 
-      await this.login({ email, password })
-
-      if (this.isAuthenticated) {
-        this.$router.replace({ name: 'modulesPage' })
-      } else {
+      try {
+        await this.login({ email, password })
+        this.$router.push({ name: 'modulesPage' })
+      } catch (err) {
         console.log('error')
       }
     }
-  },
-  computed: {
-    ...mapGetters('user', ['isAuthenticated'])
   }
 }
 </script>
